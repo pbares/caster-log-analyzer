@@ -1,0 +1,36 @@
+.App {
+  /* text-align: center; */
+}
+
+.App-header {
+  background-color: #222;
+  padding: 10px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.Result-area {
+  font-size: small;
+  margin: 10px;
+  /* Whitespace is preserved by the browser. 
+  Text will wrap when necessary, and on line breaks */
+  white-space: pre-wrap;
+}
+
+.FilterCheckBoxContainer{
+  float: left;
+  margin-right: 5px;
+}
+
+.Button{
+  margin-right: 5px;
+}
+
+.textBox {
+  width: 80%;
+  height: 150px;
+  /* margin: 10px; */
+}
