@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { applyPredicatesOnText } from "./Util.js";
+import { applyPredicatesOnText, trimText } from "./Util.js";
 import { FILTERS } from './Filters.js'
 
 /**
@@ -125,7 +125,8 @@ class App extends Component {
   }
 
   update(val) {
-    this.setState({value: val});
+    const trimmed = trimText(val);
+    this.setState({value: trimmed});
   }
 
   /**
