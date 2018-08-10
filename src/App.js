@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { applyPredicatesOnText } from "./Util.js";
+import { FILTERS } from './Filters.js'
 
 /**
  * CheckBox. When it is checked, it calls this.props.onUpdatePredicateList to transmit 
@@ -67,6 +68,11 @@ class InputArea extends Component {
   }
   
   render() {
+    const filterCheckBoxes = FILTERS.map(f => 
+       <FilterCheckBox onUpdatePredicateList={this.props.onUpdatePredicateList} 
+            value={f.value} pattern={f.pattern} color={f.color}/>
+    );
+
     return (
       <div>
         <textarea 
@@ -80,19 +86,7 @@ class InputArea extends Component {
           <button className="Button" onClick={() => this.triggerAnalysis()}>Analyze</button>
           <button className="Button" onClick={() => this.clear()}>Clear</button>
 
-          {/* color found here https://clrs.cc/ */}
-          <FilterCheckBox onUpdatePredicateList={this.props.onUpdatePredicateList} 
-            value="toExport" pattern="To export as" color="#111111"/>
-          <FilterCheckBox onUpdatePredicateList={this.props.onUpdatePredicateList} 
-            value="VV" pattern="CASTER | VV |" color="#3D9970"/>
-          <FilterCheckBox onUpdatePredicateList={this.props.onUpdatePredicateList} 
-            value="NS" pattern="CASTER | NS |" color="#2ECC40"/>
-          <FilterCheckBox onUpdatePredicateList={this.props.onUpdatePredicateList} 
-            value="CC" pattern="CASTER | CC |" color="#0074D9"/>
-          <FilterCheckBox onUpdatePredicateList={this.props.onUpdatePredicateList} 
-            value="MD" pattern="CASTER | MD |" color="#FF851B"/>
-          <FilterCheckBox onUpdatePredicateList={this.props.onUpdatePredicateList} 
-            value="Unhandled" pattern="CASTER | -- |" color="#FF4136"/>
+          {filterCheckBoxes}
         </div>
       </div>
     );
@@ -138,9 +132,9 @@ class App extends Component {
 
     return (
       <div className="App">
-        <header className="App-header">
+        {/* <header className="App-header">
           <h1 className="App-title">Caster log analyzer</h1>
-        </header>
+        </header> */}
         <InputArea onUpdate={this.update} onUpdatePredicateList={this.updatePredicateList}/>
         <ResultArea value={result}/>
       </div>
