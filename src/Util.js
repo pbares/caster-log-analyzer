@@ -20,14 +20,19 @@ export function applyPredicatesOnText(text, predicates) {
             }
         }
         if (match) {
-            result += "<font color=\"" + color +"\">";
-            result += l;
-            result += "</font>";
+            result += formatLine(l, color);
             result += '\n';
         }
     }
-
+    
     return result;
+}
+
+export function formatLine(line, color) {
+    let l = "<font color=\"" + color +"\">";
+    l += line;
+    l += "</font>";
+    return l;
 }
 
 export function trimText(text) {
