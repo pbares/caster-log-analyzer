@@ -9,13 +9,13 @@ const text = 'A line 1' + eol
     + 'A line 6' + eol
     ;
 
-it('no predicate', () => {
+test('no predicate', () => {
     const result = applyPredicatesOnText(text, []);
     
     expect(result).toEqual(text);
 });
 
-it('single predicate', () => {
+test('single predicate', () => {
     const color = "black";
     const result = applyPredicatesOnText(text, [ {pattern: 'A', color: color} ]);
     const expectedResult = '' 
@@ -26,7 +26,7 @@ it('single predicate', () => {
     expect(result).toEqual(expectedResult);
 });
 
-it('several predicates', () => {
+test('several predicates', () => {
     const color = "black";
     const result = applyPredicatesOnText(text, [ 
         {pattern: 'A', color: color},
