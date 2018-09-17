@@ -84,6 +84,7 @@ class InputArea extends Component {
     super(props);
     this.state = {
       text: "",
+      disabled: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -100,6 +101,7 @@ class InputArea extends Component {
 
   triggerAnalysis() {
     this.props.onUpdate(this.state.text);
+    this.setState({ disabled: true });
   }
 
   toggleRemoveFilter() {
@@ -127,6 +129,7 @@ class InputArea extends Component {
           placeholder="copy/paste here the log to analyze"
           value={this.state.text}
           onChange={this.handleChange}
+          disabled={this.state.disabled}
         />
 
         <div>
