@@ -199,7 +199,14 @@ class App extends Component {
   }
 
   render() {
-    const result = applyPredicatesOnText(this.state.value, this.state.predicates);
+    let predicates = this.state.predicates;
+    let textPredicate;
+    const idx = predicates.findIndex(p => p.id === TEXT_BOX_ID);
+    if(idx > -1) {
+      textPredicate = [predicates[idx]];
+      predicates.splice(idx, 1); // remove the predicate from this array
+    }
+    const result = applyPredicatesOnText(this.state.value, predicates, textPredicate);
 
     const selectedItems = new Set();
     this.state.predicates.map(p => selectedItems.add(p.id));
